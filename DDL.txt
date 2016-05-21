@@ -1,0 +1,84 @@
+CREATE TABLE `Admin` (
+  `Admin_ID` int(11) NOT NULL,
+  `Name` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`Admin_ID`)
+)
+
+CREATE TABLE `Customer` (
+  `Customer_ID` int(11) NOT NULL,
+  `Password` varchar(45) NOT NULL,
+  `Name` varchar(45) NOT NULL,
+  `Address` varchar(90) DEFAULT NULL,
+  `PhoneNo` decimal(10,0) NOT NULL,
+  `CreditCardNo` varchar(30) NOT NULL,
+  PRIMARY KEY (`Customer_ID`)
+) 
+
+CREATE TABLE `Thread` (
+  `ThreadID` int(11) NOT NULL,
+  `Product_ID` int(11) NOT NULL,
+  `Customer_ID` int(11) NOT NULL,
+  `Parent_ThreadID` int(11) NOT NULL,
+  `Main_Comment` varchar(100) NOT NULL,
+  PRIMARY KEY (`ThreadID`)
+)
+
+CREATE TABLE `mydb`.`Product` (
+  `ProductID` INT NOT NULL,
+  `Name` VARCHAR(45) NOT NULL,
+  `Group` VARCHAR(45) NULL,
+  `Manufacturer` VARCHAR(45) NULL,
+  `Available` INT NOT NULL,
+  `Price` FLOAT NOT NULL,
+  `Rating` FLOAT NULL,
+  PRIMARY KEY (`ProductID`));
+
+
+ALTER TABLE `mydb`.`Customer` 
+CHANGE COLUMN `Name` `Name` VARCHAR(60) NOT NULL ,
+ADD COLUMN `Username` VARCHAR(45) NOT NULL AFTER `Customer_ID`;
+
+
+CREATE TABLE `mydb`.`Advertisement` (
+  `AdID` INT NOT NULL AUTO_INCREMENT,
+  `Product_ID` INT NOT NULL,
+  `Cusomer_ID` INT NOT NULL,
+  `Price` FLOAT NOT NULL,
+  `Negotiable` INT NOT NULL,
+  `Approved` INT NOT NULL,
+  `Status` INT NOT NULL,
+  PRIMARY KEY (`AdID`));
+
+
+CREATE TABLE `mydb`.`Order` (
+  `OrderID` INT NOT NULL AUTO_INCREMENT,
+  `Product_ID` INT NOT NULL,
+  `Customer_ID` INT NOT NULL,
+  `Approved` INT NOT NULL,
+  `PlacedonDate` DATETIME NOT NULL,
+  `DeliveryDate` DATETIME NOT NULL,
+  `Amount` INT NULL,
+  PRIMARY KEY (`OrderID`));
+
+
+ALTER TABLE `mydb`.`Admin` 
+CHANGE COLUMN `Admin_ID` `Admin_ID` INT(11) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `mydb`.`Customer` 
+CHANGE COLUMN `Customer_ID` `Customer_ID` INT(11) NOT NULL AUTO_INCREMENT ;
+
+
+ALTER TABLE `mydb`.`Product` 
+CHANGE COLUMN `ProductID` `ProductID` INT(11) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `mydb`.`Thread` 
+CHANGE COLUMN `ThreadID` `ThreadID` INT(11) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `mydb`.`Advertisement` 
+ADD COLUMN `PlacedonDate` DATETIME NOT NULL AFTER `Status`;
+
+
+INSERT INTO `mydb`.`Admin` (`Admin_ID`, `Name`, `password`) VALUES ('1', 'DD', '1234');
+INSERT INTO `mydb`.`Admin` (`Admin_ID`, `Name`, `password`) VALUES ('2 ', 'dmehrab06', '4567');
+
