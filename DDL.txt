@@ -78,6 +78,9 @@ CHANGE COLUMN `ThreadID` `ThreadID` INT(11) NOT NULL AUTO_INCREMENT ;
 ALTER TABLE `mydb`.`Advertisement` 
 ADD COLUMN `PlacedonDate` DATETIME NOT NULL AFTER `Status`;
 
+ALTER TABLE `mydb`.`Advertisement` 
+CHANGE COLUMN `Cusomer_ID` `Customer_ID` INT(11) NOT NULL ;
+
 
 INSERT INTO `mydb`.`Admin` (`Admin_ID`, `Name`, `password`) VALUES ('1', 'DD', '1234');
 INSERT INTO `mydb`.`Admin` (`Admin_ID`, `Name`, `password`) VALUES ('2 ', 'dmehrab06', '4567');
