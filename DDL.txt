@@ -81,6 +81,19 @@ ADD COLUMN `PlacedonDate` DATETIME NOT NULL AFTER `Status`;
 ALTER TABLE `mydb`.`Advertisement` 
 CHANGE COLUMN `Cusomer_ID` `Customer_ID` INT(11) NOT NULL ;
 
+ALTER TABLE `mydb`.`Order` 
+RENAME TO  `mydb`.`ProductOrder` ;
+
+use mydb;
+ALTER TABLE ProductOrder ADD CONSTRAINT ORDER_CUSTOMER_FK
+FOREIGN KEY (Customer_ID)
+REFERENCES Customer (Customer_ID);
+
+use mydb;
+ALTER TABLE Advertisement ADD CONSTRAINT CUSTOMER_ADVERTISEMENT_FK
+FOREIGN KEY (Customer_ID)
+REFERENCES Customer (Customer_ID);
+
 
 INSERT INTO `mydb`.`Admin` (`Admin_ID`, `Name`, `password`) VALUES ('1', 'DD', '1234');
 INSERT INTO `mydb`.`Admin` (`Admin_ID`, `Name`, `password`) VALUES ('2 ', 'dmehrab06', '4567');
